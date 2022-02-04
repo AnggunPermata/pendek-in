@@ -1,6 +1,9 @@
 class LinksController < ApplicationController
-    before_action :set_link, only: [:edit, :update, :show, :destory]
+    before_action :set_link, only: [:edit, :update, :show, :destroy]
     def index
+    end
+
+    def show
     end
 
     def all
@@ -38,7 +41,7 @@ class LinksController < ApplicationController
 
     def destroy
         @link.destroy
-        redirect_to links_path
+        redirect_to links_path, status: 303
     end
 
     private

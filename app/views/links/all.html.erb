@@ -10,7 +10,14 @@
         <td></td>
         <td><a href=<%= @base_url %><%= link.link_source%>><%= @base_url %><%= link.link_short %></a></td>
         <td><%= link_to 'Edit', edit_link_path(link.id) %></td>  
+        <td><%= link_to "Delete", [link], data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure to delete the generated link?"
+        } %></td>  
+        <td><small>Created <%= time_ago_in_words(link.created_at) %> ago, 
+            edited <%= time_ago_in_words(link.updated_at) %> ago</small></td>
       </tr>
     <% end %>
 </table>
 
+<%= link_to "Create New Shortened Link", "links/new", method: :create %>
