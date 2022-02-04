@@ -4,12 +4,13 @@
   <th>Source Link:</th>
   <th></th>
   <th>Shortened Link:</th>
-    <tr>
-      <% @links.each do |link| %>
+    <% @links.each do |link| %>
+      <tr>
         <td><a href=#><%= link.link_source %></a></td>
         <td></td>
         <td><a href=<%= @base_url %><%= link.link_source%>><%= @base_url %><%= link.link_short %></a></td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
+    
 </table>
 

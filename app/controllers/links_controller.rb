@@ -14,12 +14,12 @@ class LinksController < ApplicationController
     
 
     def create
-        @links = Link.new(link_param)
-        if @links.save
+        @link = Link.new(link_param)
+        if @link.save
           flash[:notice] = "New link successfully created"
-          render 'all'
+          redirect_to links_path
         else
-          render 'new'
+          render :new, status: :unprocessable_entity
         end
     end
     
@@ -29,7 +29,7 @@ class LinksController < ApplicationController
           render 'all'
         else
         #   flash[:error] = "Something went wrong"
-          render 'edit'
+          render 'edit', status: :unprocessable_entity
         end
     end
 
