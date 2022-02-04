@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-    before_action :set_article, only: [:edit, :update, :show, :destory]
+    before_action :set_link, only: [:edit, :update, :show, :destory]
     def index
     end
 
@@ -26,7 +26,7 @@ class LinksController < ApplicationController
     def update
         if @link.update(link_param)
           flash[:notice] = "Link was successfully updated"
-          render 'all'
+          redirect_to links_path
         else
         #   flash[:error] = "Something went wrong"
           render 'edit', status: :unprocessable_entity

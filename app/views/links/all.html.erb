@@ -9,8 +9,8 @@
         <td><a href=#><%= link.link_source %></a></td>
         <td></td>
         <td><a href=<%= @base_url %><%= link.link_source%>><%= @base_url %><%= link.link_short %></a></td>
+        <td><%= link_to 'Edit', edit_link_path(link.id) %></td>  
       </tr>
     <% end %>
-    
 </table>
 
