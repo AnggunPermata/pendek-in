@@ -1,9 +1,11 @@
 class LinksController < ApplicationController
     before_action :set_link, only: [:edit, :update, :show, :destroy]
     def index
+      
     end
 
     def show
+      
     end
 
     def all
@@ -43,6 +45,25 @@ class LinksController < ApplicationController
         @link.destroy
         redirect_to links_path, status: 303
     end
+
+    def access
+      link_param = params[:link_short]
+      link = Link.where(link_short: link_param)
+      # check if link is empty (if array is empty?)
+      is_link_empty = link.empty?
+    
+      if is_link_empty
+        puts "PLEASE MAKE THE LINK FIRST!!!!!!!!!"
+        flash[:error] = "Link is not exist."
+        redirect_to links_path, allow_other_host: true
+      else
+        # get source link
+        get_source_link = link.pluck(:link_source)
+        source_link = "#{get_source_link[0]}"
+        redirect_to source_link, allow_other_host: true
+      end
+    end
+
 
     private
 

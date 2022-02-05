@@ -6,9 +6,9 @@
   <th>Shortened Link:</th>
     <% @links.each do |link| %>
       <tr>
-        <td><a href=#><%= link.link_source %></a></td>
+        <td><a href=<%= "#{link.link_source}" %>><%= link.link_source %></a></td>
         <td></td>
-        <td><a href=<%= @base_url %><%= link.link_source%>><%= @base_url %><%= link.link_short %></a></td>
+        <td><%= link_to "#{link.link_short}", access_link_path(link.link_short) %></td>
         <td><%= link_to 'Edit', edit_link_path(link.id) %></td>  
         <td><%= link_to "Delete", [link], data: {
             turbo_method: :delete,
